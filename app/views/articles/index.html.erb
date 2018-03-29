@@ -5,6 +5,9 @@
 </p>
 <% @articles.each do |article| %>
   <p>
-    <%= article.title %>  <%= link_to 'Show', article_path(article) %> <%= link_to 'Update', edit_article_path(article) %>
+    <%= article.title %>
+    <%= link_to 'Show', article_path(article) %>
+    <%= link_to 'Update', edit_article_path(article) %>
+    <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %>
   </p>
 <% end %>
