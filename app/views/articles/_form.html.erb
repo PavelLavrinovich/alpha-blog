@@ -1,26 +1,38 @@
 <% if @article.errors.any? %>
-  <h2>The article can't be saved</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+  <div class="field_with_errors">
+    <h2>The article can't be saved</h2>
+    <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(@article, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :title %>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :title, class: 'form-control', placeholder: 'Title of your article', autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :description %>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Some description' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-11">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      </div>
     <% end %>
-  </ul>
-<% end %>
-
-<%= form_for @article do |f| %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit class: 'btn btn-primary' %>
-  </p>
-<% end %>
-
-<p>
-  <%= link_to 'To the list', articles_path %>
-</p>
+  </div>
+</div>
