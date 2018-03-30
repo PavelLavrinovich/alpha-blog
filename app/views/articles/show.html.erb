@@ -1,11 +1,13 @@
-<h1>This is a great article</h1>
+<div class="jumbotron">
+  <h1>This is a great article</h1>
 
-<p>
-  Title: <%= @article.title %>
-</p>
+  <p>
+    Title: <%= @article.title %>
+  </p>
 
-<p>
-  Description: <%= @article.description %>
-</p>
+  <p>
+    Description: <%= @article.description %>
+  </p>
 
-<%= link_to 'To the list', articles_path %>
+  <%= link_to 'To the list', articles_path %>
+</div>
