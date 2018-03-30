@@ -10,11 +10,13 @@
 
   <body>
     <%= render 'layouts/navigation' %>
-    <div>
-      <%= render 'layouts/messages' %>
-    </div>
-    <div>
-      <%= yield %>
+    <div class="jumbotron">
+      <div>
+        <%= render 'layouts/messages' %>
+      </div>
+      <div>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
