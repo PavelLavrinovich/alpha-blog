@@ -8,4 +8,8 @@
   Description: <%= @article.description %>
 </p>
 
+<p>
+  It was created by <%= @article.user.username %>
+</p>
+
 <%= link_to 'To the list', articles_path %>
