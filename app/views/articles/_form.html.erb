@@ -1,13 +1,4 @@
-<% if @article.errors.any? %>
-  <div class="field_with_errors">
-    <h2>The article can't be saved</h2>
-    <ul>
-      <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'shared/errors', obj: @article %>
 
 <div class="row">
   <div class="col-xs-12">
