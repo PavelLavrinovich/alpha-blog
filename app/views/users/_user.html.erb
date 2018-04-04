@@ -1,0 +1,8 @@
+<% users.each do |user| %>
+  <p>
+    <%= user.username %>
+    <%= link_to 'Show', user_path(user) %>
+    <%= link_to 'Update', edit_user_path(user) %>
+    <%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
+  </p>
+<% end %>
