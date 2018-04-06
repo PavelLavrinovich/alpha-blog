@@ -8,5 +8,8 @@
 
 <div class="row">
   <h2><%= @user.username %>'s articles</h2>
-  <%= render 'articles/article', articles: @user.articles %>
+  <%= render 'articles/article', articles: @user_articles %>
+  <div>
+    <%= will_paginate @user_articles %>
+  </div>
 </div>
