@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
   private
 
   def require_exact_user
-    redirect_to log_in_path if !logged_in? || current_user != @article.user
+    redirect_to log_in_path if !logged_in? || (current_user != @article.user && !current_user.admin?)
   end
 
   def set_article

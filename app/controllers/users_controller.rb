@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      session[:user_id] = @user.id if !logged_in? || !current_user.admin?
       redirect_to user_path(@user)
     else
       render :new
@@ -40,13 +40,13 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:notice] = 'The article has been deleted.'
-    redirect_to articles_path
+    redirect_to users_path
   end
 
   private
 
   def require_exact_user
-    redirect_to log_in_path if !logged_in? || current_user != @user
+    redirect_to log_in_path if !logged_in? || (current_user != @user && !current_user.admin?)
   end
 
   def set_user
