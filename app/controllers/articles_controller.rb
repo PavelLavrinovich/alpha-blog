@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :show, :update, :destroy]
-  before_action :autorize
+  before_action :require_user
+  before_action :require_exact_user, only: [:edit, :update, :destroy]
 
   def new
     @article = Article.new
@@ -16,7 +17,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.find(session[:user_id])
+    @article.user = current_user
     if @article.save
       flash[:notice] = 'The article has been created.'
       redirect_to article_path(@article)
@@ -46,8 +47,8 @@ class ArticlesController < ApplicationController
 
   private
 
-  def autorize
-    redirect_to log_in_path unless session[:user_id]
+  def require_exact_user
+    redirect_to log_in_path if !logged_in? || current_user != @article.user
   end
 
   def set_article

@@ -2,7 +2,7 @@
   <%= link_to 'Alpha Blog', root_path, class: "navbar-brand" %>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <% if session[:user_id] %>
+      <% if logged_in? %>
         <%= link_to 'Articles', articles_path, class: "navbar-brand" %>
         <%= link_to 'Users', users_path, class: "navbar-brand" %>
         <%= link_to 'Log out', log_out_path, class: "navbar-brand", method: :delete %>
