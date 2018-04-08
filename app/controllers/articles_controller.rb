@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :show, :update, :destroy]
+  before_action :autorize
 
   def new
     @article = Article.new
@@ -44,6 +45,10 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+  def autorize
+    redirect_to log_in_path unless session[:user_id]
+  end
 
   def set_article
     @article = Article.find(params[:id])

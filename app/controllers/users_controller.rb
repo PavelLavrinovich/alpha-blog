@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show, :destroy]
+  before_action :autorize, except: [:new, :create]
 
   def new
     @user = User.new
@@ -41,6 +42,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def autorize
+    redirect_to log_in_path unless session[:user_id]
+  end
 
   def set_user
     @user = User.find(params[:id])
