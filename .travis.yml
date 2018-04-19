@@ -2,5 +2,5 @@ language: ruby
 rvm:
   - 2.5.1
 before_install:
-  - travis_retry gem update --system
-  - travis_retry gem update bundler
+  - gem update --system
+  - gem install bundler
