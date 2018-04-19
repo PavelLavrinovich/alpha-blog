@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+
+<p>
+  <%= link_to 'New category', new_category_path, class: 'btn btn-primary' %>
+</p>
+
+<%= render 'category', categories: @categories %>
+
+<div>
+  <%= will_paginate %>
+</div>
