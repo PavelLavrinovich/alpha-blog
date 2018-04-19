@@ -12,4 +12,14 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     assert_template 'categories/index'
     assert_match 'Test category', response.body
   end
+
+  test 'create_invalid_category' do
+    get new_category_path
+    assert_template 'categories/new'
+
+    assert_no_difference 'Category.count' do
+      post categories_path, params: {category: {name: '11'}}
+    end
+    assert_template 'categories/new'
+  end
 end
