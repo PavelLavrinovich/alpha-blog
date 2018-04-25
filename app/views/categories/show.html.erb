@@ -1,0 +1,9 @@
+<div>
+  <p>Category <%= @category.name %></p>
+</div>
+<div>
+  <%= render 'articles/article', articles: @category_articles %>
+</div>
+<div>
+  <%= will_paginate @category_articles %>
+</div>

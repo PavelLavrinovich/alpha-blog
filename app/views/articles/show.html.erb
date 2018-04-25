@@ -12,4 +12,10 @@
   It was created by <%= @article.user.username %>
 </p>
 
+<% if @article.categories.any? %>
+  <p>
+    Categories: <%= render 'categories/badge_category', categories: @article.categories %>
+  </p>
+<% end %>
+
 <%= link_to 'To the list', articles_path %>
